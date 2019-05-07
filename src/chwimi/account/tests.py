@@ -25,10 +25,12 @@ class SignupTest(TestCase):
         response = cli.post('/account/signup/', data={
             'input_userid':'helloworld',
             'input_userpw':'1234k5678',
-            'input_userpw_check':'1234k5678'
+            'input_userpw_check':'1234k5678',
+            'input_email':'helloworld@gmail.com'
         })
 
         user = User.objects.get(username = 'helloworld')
+        print(user.email)
         self.assertTrue(user)
         
 class LoginTest(TestCase):
