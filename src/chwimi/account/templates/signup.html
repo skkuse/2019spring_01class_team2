@@ -2,4 +2,21 @@
 
 {% block contents %}
 <h1>This is signup page</h1>
+
+<form action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" class="userid" name='input_userid' placeholder="아이디" required> 
+    <br>
+    <input type="password" class="password" name='input_userpw' placeholder="비밀번호" required>
+    <br>
+    <input type="password" class="password_check" name='input_userpw_check' placeholder="비밀번호 확인" required>
+    <br>
+    <!-- todo: email 형식 만들 것 -->
+    <input type="email" class="email" name='input_email' placeholder="이메일" required>
+    <br>
+
+
+    <input type="submit" value="회원가입">
+</form>
+
 {% endblock %}

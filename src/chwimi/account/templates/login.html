@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<h1>This is login page</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" class="userid" name='input_userid' placeholder="아이디" required> 
+    <br>
+    <input type="password" class="password" name='input_userpw' placeholder="비밀번호" required>
+    <br>
+
+    <input type="submit" value="로그인">
+</form>
+
+{% endblock %}
