@@ -8,3 +8,5 @@ urlpatterns = [
     path('', main.views.home, name='home'),
     path('account/', include('account.urls')),
 ]
+
+# admin/youngadmin
