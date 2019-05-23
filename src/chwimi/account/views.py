@@ -15,10 +15,10 @@ def signup(request):
                     password = request.POST['input_userpw']
                 )
                 user.save()
-                # print('user id: '+user.username)
+
                 profile = Profile(user = user)
                 profile.email = request.POST['input_email']
-                # print('profile email: '+profile.email)
+
                 ## Todo: 선택사항(성별, 전화번호) 저장
                 profile.save()
                 
@@ -44,4 +44,9 @@ def login(request):
     return render(request, 'login.html')
 
 def logout(request):
-    pass
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('home')
+        
+    return render(request, 'login.html')
+

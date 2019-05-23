@@ -106,6 +106,9 @@ class AccessTest(unittest.TestCase):
         inputbox_pw.send_keys('1234k5678')
 
         # 사용자는 로그인 버튼을 클릭한다.
+        loginButton = self.browser.find_element_by_class_name('loginBtn')
+        loginButton.send_keys(Keys.ENTER)
+        
         # 임시 데이터베이스와 연동하기
         pass
 
