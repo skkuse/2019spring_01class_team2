@@ -5,12 +5,24 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    <input type="text" class="userid" name='input_userid' placeholder="아이디" required> 
-    <br>
-    <input type="password" class="password" name='input_userpw' placeholder="비밀번호" required>
-    <br>
 
-    <input class="loginBtn" type="submit" value="로그인">
+    <div class="container">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_userid' placeholder="아이디" required>
+        </div>
+        
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">PW</span>
+            </div>
+            <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name='input_userpw' placeholder="비밀번호" required>
+        </div>
+        
+        <input class="btn btn-outline-success" value='로그인' type="submit">
+    </div>
 </form>
 
 {% endblock %}
