@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extra-style %}
+
+{% endblock %}
+
+{% block headers %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'about-bg.jpg' %})">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+            <h1>CHWIMI</h1>
+            <span class="subheading">Chwimi는 매달 취향에 맞는 취미키트를 제공합니다.</span>
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
 
 {% block contents %}
-<h1>This is main page</h1>
+  
+
 
 {% endblock %}

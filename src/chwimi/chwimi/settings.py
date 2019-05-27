@@ -35,6 +35,7 @@ PROJ_APPS = [
     'subscribe.apps.SubscribeConfig',
     'hobbytest.apps.HobbytestConfig',
     'review.apps.ReviewConfig',
+    'notice.apps.NoticeConfig',
 ]
 
 INSTALLED_APPS = PREQ_APPS + PROJ_APPS
@@ -121,7 +122,8 @@ USE_TZ = True
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'main', 'static'),
 ]
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

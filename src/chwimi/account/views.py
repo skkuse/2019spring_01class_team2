@@ -15,18 +15,17 @@ def signup(request):
                     password = request.POST['input_userpw']
                 )
                 user.save()
-
                 profile = Profile(user = user)
                 profile.email = request.POST['input_email']
 
                 ## Todo: 선택사항(성별, 전화번호) 저장
                 profile.save()
-                
+                messages.add_message(request, messages.SUCCESS, '환영합니다!')
                 return redirect('home')
             except:
-                print('*** 이미 존재하는 id ***')
+                messages.add_message(request, messages.ERROR, '이미 존재하는 id입니다.')
                 return redirect('signup')
-                
+        messages.add_message(request, messages.ERROR, '비밀번호가 일치하지 않습니다.')   
     return render(request, 'signup.html')
 
 def login(request):
@@ -37,8 +36,10 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
+            messages.add_message(request, messages.SUCCESS, '환영합니다!')
             return redirect('home')
         else:
+            messages.add_message(request, messages.ERROR, '로그인에 실패하였습니다. 아이디 또는 비밀번호를 확인해주세요.')
             return render(request, 'login.html')
 
     return render(request, 'login.html')
@@ -46,6 +47,7 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
+        messages.add_message(request, messages.SUCCESS, '성공적으로 로그아웃 되었습니다.')
         return redirect('home')
         
     return render(request, 'login.html')

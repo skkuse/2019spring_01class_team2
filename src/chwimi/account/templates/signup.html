@@ -1,21 +1,63 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block headers %}
+<header class="masthead" style="background-image: url( {% static 'background1.jpg' %} )">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+            <h1>SignUp</h1>
+            <span class="subheading">Chwimi인이 되기 위한 공간입니다.</span>
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
-<h1>This is signup page</h1>
 
 <form action="{% url 'signup' %}" method="POST">
     {% csrf_token %}
-    <input type="text" class="userid" name='input_userid' placeholder="아이디" required> 
-    <br>
-    <input type="password" class="password" name='input_userpw' placeholder="비밀번호" required>
-    <br>
-    <input type="password" class="password_check" name='input_userpw_check' placeholder="비밀번호 확인" required>
-    <br>
-    <!-- todo: email 형식 만들 것(front) && 선택사항(성별, 전화번호) 추가-->
-    <input type="email" class="email" name='input_email' placeholder="이메일" required>
-    <br>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+        </div>
+        <input type="text" class="form-control userid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_userid' placeholder="아이디" required>
+    </div>
 
-    <input type="submit" class="signupBtn" value="회원가입">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">PW</span>
+        </div>
+        <input type="password" class="form-control password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_userpw' placeholder="비밀번호" required>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">PW Check</span>
+        </div>
+        <input type="password" class="form-control password_check" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_userpw_check' placeholder="비밀번호 확인" required>
+    </div>
+
+    <!-- todo: email 형식 만들 것(front) && 선택사항(성별, 전화번호) 추가-->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+        </div>
+        <input type="email" class="form-control email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_email' placeholder="이메일" required>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+        </div>
+        <input type="text" class="form-control phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_phone' placeholder="전화번호" >
+    </div>
+
+    <input type="submit" class="btn btn-outline-success signupBtn" value="회원가입">
 </form>
+
 
 {% endblock %}

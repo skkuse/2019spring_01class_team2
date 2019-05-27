@@ -12,9 +12,55 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'clean-blog.min.css' %}">
+
+    {% block extra-style %}
+    {% endblock %}
+
     <title>Chwimi</title>
+    <style type="text/css">
+        body{
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+        p{
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+      
+        footer{
+            background-image: url('img/background2.jpg');
+            background-size: cover;
+        }
+        #mainNav{ /* 배경 색상 */
+          background-color: #FFFFFF;
+          border-color: #FFFFFF;
+          padding-bottom: 10px;
+          font-weight:300;
+          font-size:18px;
+          height: 90px;
+          text-transform: capitalize;
+          border-bottom: 1px solid #AAAAAA;
+        }
+      
+        #mainNav .navbar-nav > li.nav-item > a {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #000000;
+        text-transform: uppercase;
+        }
+        
+    </style>
+
+
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img style="height:80px" class="navbar-brand" src="{% static 'logo.png' %}">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,28 +68,59 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="{% url 'home' %}">HOME</a>
                 
-                <a class="nav-item nav-link" href="{% url 'subscribe' %}">Subscribe</a>
-                <a class="nav-item nav-link" href="{% url 'review' %}">Review</a>
-                <a class="nav-item nav-link" href="{% url 'hobbytest' %}">Hobby Test</a>
+                <a class="nav-item nav-link" href="{% url 'about' %}">ABOUT</a>
+                <a class="nav-item nav-link" href="{% url 'notice' %}">NOTICE</a>
+                <a class="nav-item nav-link" href="{% url 'subscribe' %}">SUBSCRIBE</a>
+                <a class="nav-item nav-link" href="{% url 'hobbytest' %}">HOBBYTEST</a>
+                <a class="nav-item nav-link" href="{% url 'review' %}">REVIEW</a>
                 <a class="nav-item nav-link" href="{% url 'qna' %}">Q&A</a>
+                
                 {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="#">Mypage</a>
-                <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                <a class="nav-item nav-link" href="#">MYPAGE</a>
+                <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">LOGOUT</a>
                 <form id="logout" method="POST" action="{% url 'logout' %}">
                     {% csrf_token %} <input type="hidden" />
                 </form>
                 {% else %}
-                <a class="nav-item nav-link" href="{% url 'signup' %}">Signup</a>
-                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'signup' %}">SIGNUP</a>
+                <a class="nav-item nav-link" href="{% url 'login' %}">LOGIN</a>
                 {% endif %}
+
                 
             </div>
         </div>
+        {% if user.is_authenticated %}
+        <p class="text-right">환영합니다, {{user.username}}님!</p>
+        {% endif %}
     </nav>
-    {% block contents %}
-    
+
+    <div class="container
+    ">
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="p-3 mt-2 mb-2 border border-success text-success rounded text-center">{{ message }} </div>
+            {% else %}
+                <div class="p-3 mt-2 mb-2 border border-danger text-danger rounded text-center ">{{ message }} </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
+    {% block headers %}
     {% endblock %}
+
+    <div class="container">
+    {% block contents %}
+    {% endblock %}
+    </div>
+
+    <footer class="page-footer font-small blue"> 
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+          <a href="{% url 'home' %}"> CHWIMI</a>
+        </div>
+    </footer>
 </body>
 </html>
