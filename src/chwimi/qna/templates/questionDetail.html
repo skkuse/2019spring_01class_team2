@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block headers %}
+<header class="masthead" style="background-image: url({% static 'background2.jpg' %})">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+            <h1>QnA</h1>
+            <span class="subheading">CHWIMI는 여러분의 질문을 기다립니다.<br></span>
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="jumbotron">
+    <h1 class="display-4">{{question.title}}</h1>
+    <p class="lead">{{question.date}}</p>
+    <p class="lead">{{question.user}}</p>
+    <hr class="my-4">
+    <p>{{question.content}}</p>
+    {% if question.files %}
+    <img src="{{question.files.url}}">
+    {% endif %}
+</div>
+
+<a class="btn btn-outline-warning" href="{% url 'qna' %}" role="button">목록으로</a>
+{% endblock %}

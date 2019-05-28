@@ -18,3 +18,5 @@ class Comment_question(models.Model):
     content = models.CharField(max_length=200)
     date = models.DateTimeField(default=datetime.now())
 
+    def __str__(self):
+        return self.content[:20]

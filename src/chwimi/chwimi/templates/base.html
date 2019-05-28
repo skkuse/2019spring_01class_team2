@@ -18,6 +18,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">  
+
     <link rel="stylesheet" href="{% static 'clean-blog.min.css' %}">
 
     {% block extra-style %}
@@ -78,22 +81,22 @@
                 <a class="nav-item nav-link" href="{% url 'qna' %}">Q&A</a>
                 
                 {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="#">MYPAGE</a>
+                <a class="nav-item nav-link mypage" href="{% url 'mypage' %}">MYPAGE</a>
                 <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">LOGOUT</a>
                 <form id="logout" method="POST" action="{% url 'logout' %}">
                     {% csrf_token %} <input type="hidden" />
                 </form>
                 {% else %}
-                <a class="nav-item nav-link" href="{% url 'signup' %}">SIGNUP</a>
-                <a class="nav-item nav-link" href="{% url 'login' %}">LOGIN</a>
+                <a class="nav-item nav-link signup" href="{% url 'signup' %}">SIGNUP</a>
+                <a class="nav-item nav-link login" href="{% url 'login' %}">LOGIN</a>
                 {% endif %}
 
                 
             </div>
+            {% if user.is_authenticated %}
+            <p class="text-right">환영합니다, {{user.username}}님!</p>
+            {% endif %}
         </div>
-        {% if user.is_authenticated %}
-        <p class="text-right">환영합니다, {{user.username}}님!</p>
-        {% endif %}
     </nav>
 
     <div class="container

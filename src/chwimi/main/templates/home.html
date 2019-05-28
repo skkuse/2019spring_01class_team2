@@ -2,7 +2,11 @@
 {% load staticfiles %}
 
 {% block extra-style %}
-
+<style>
+    .home_intro{
+        color: black !important;
+    }
+</style>
 {% endblock %}
 
 {% block headers %}
@@ -11,7 +15,7 @@
     <div class="container">
         <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
+            <div class="site-heading home_intro">
             <h1>CHWIMI</h1>
             <span class="subheading">Chwimi는 매달 취향에 맞는 취미키트를 제공합니다.</span>
             </div>

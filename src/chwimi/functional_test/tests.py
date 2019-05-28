@@ -6,20 +6,22 @@ import unittest
 import time
 
 ## 기능 테스트
-class NewVisitorTest(LiveServerTestCase):
+class A_NewVisitorTest(LiveServerTestCase):
     def setUp(self):
         chrome_path = 'C://Users/young/chromedriver_win32/chromedriver.exe'
         self.browser = webdriver.Chrome(chrome_path)
+        self.browser.maximize_window()
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
         # 사용자는 웹사이트를 종료한다.
         self.browser.quit()
 
-    def test_can_register_user_account(self):
+    def test_can_register_user_account_and_login(self):
         # 사용자는 chwimi의 회원가입 페이지에 접속한다.
-        self.browser.get('http://localhost:8000/account/signup')
-        # self.browser.get(self.live_server_url)
+        self.browser.get(self.live_server_url)
+        signupBtn = self.browser.find_element_by_class_name('signup')
+        signupBtn.click()
 
         # 웹 사이트의 제목이 'Chwimi'를 표시한다.
         self.assertIn('Chwimi', self.browser.title)
@@ -57,33 +59,17 @@ class NewVisitorTest(LiveServerTestCase):
             '이메일'
         )
         inputbox_email.send_keys('helloworld@gmail.com')
-        
+        time.sleep(2)
+
         # 사용자는 회원가입 버튼을 클릭한다.
         signupButton = self.browser.find_element_by_class_name('signupBtn')
         signupButton.send_keys(Keys.ENTER)
 
-        # 페이지 상단에 Mypage가 표시된다.
-        ## todo: selenium으로 받아온 정보 text 출력하기
-        menus = self.browser.find_elements_by_class_name('nav-item')
-        self.assertTrue(menus)
-        time.sleep(10)
-        self.assertTrue(any(menu.text == 'Mypage' for menu in menus),)
+        time.sleep(3)
 
-        self.fail('======기능테스트: 회원가입======')
-
-class AccessTest(unittest.TestCase):
-    def setUp(self):
-        chrome_path = 'C://Users/young/chromedriver_win32/chromedriver.exe'
-        self.browser = webdriver.Chrome(chrome_path)
-        self.browser.implicitly_wait(3)
-
-    def tearDown(self):
-        # 사용자는 웹사이트를 종료한다.
-        self.browser.quit()
-
-    def test_can_access_to_service(self):
         # 사용자는 chwimi의 로그인 페이지에 접속한다.
-        self.browser.get('http://localhost:8000/account/login')
+        loginBtn = self.browser.find_element_by_class_name('login')
+        loginBtn.click()
 
         # 웹 사이트의 제목이 'Chwimi'를 표시한다.
         self.assertIn('Chwimi', self.browser.title)
@@ -104,13 +90,16 @@ class AccessTest(unittest.TestCase):
             '비밀번호'
         )
         inputbox_pw.send_keys('1234k5678')
+        time.sleep(2)
 
         # 사용자는 로그인 버튼을 클릭한다.
         loginButton = self.browser.find_element_by_class_name('loginBtn')
         loginButton.send_keys(Keys.ENTER)
         
-        # 임시 데이터베이스와 연동하기
-        pass
+        # 페이지 상단에 Mypage가 표시된다.
+        mypage = self.browser.find_element_by_class_name('mypage')
+        self.assertTrue(mypage)
+        time.sleep(3)
 
-        self.fail('======기능테스트: 로그인======')
+        # self.fail('======기능테스트: 회원가입 및 로그인======')
 
