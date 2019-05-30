@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block headers %}
+<header class="masthead" style="background-image: url({% static 'hobby_main.png' %})">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+            <h1 style="color:black;">취미 분석 테스트</h1>
+            <span class="subheading" style="color: black;">CHWIMI는 여러분의 질문을 기다립니다.<br></span>
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
-<h1>HOBBYTEST page</h1>
+
 {% endblock %}

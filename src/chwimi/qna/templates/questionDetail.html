@@ -129,7 +129,7 @@
 {% endblock %}
 
 {% block headers %}
-<header class="masthead" style="background-image: url({% static 'background2.jpg' %})">
+<header class="masthead" style="background-image: url({% static 'qna_main.png' %})">
     <div class="container">
         <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -164,10 +164,10 @@
 <h5>날짜: {{cmt.date}}</h5>
 <br>
 {% empty %}
-<h5>no comment</h5>
+<h5>댓글이 없습니다.</h5>
 {% endfor %}
 
-<!-- 운영자 댓글 입력 란 -->
+<!-- 댓글 입력 란 -->
 {% if user.is_authenticated %}
 <div class="container" style="border: 2px solid gray; padding: 20px;">
 	<div class="row" style="text-align: center !important;">

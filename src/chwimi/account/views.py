@@ -15,11 +15,15 @@ def signup(request):
                     password = request.POST['input_userpw']
                 )
                 user.save()
+
                 profile = Profile(user = user)
                 profile.email = request.POST['input_email']
-
-                ## Todo: 선택사항(성별, 전화번호) 저장
+                if request.POST['input_phone']:
+                    profile.phone = request.POST['input_phone']
+                if request.POST['optradio']:
+                    profile.gender = request.POST['optradio']
                 profile.save()
+                
                 messages.add_message(request, messages.SUCCESS, '환영합니다!')
                 return redirect('home')
             except:

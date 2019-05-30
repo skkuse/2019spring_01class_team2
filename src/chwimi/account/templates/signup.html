@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block extra-style %}
+<style>
+    .essential{
+        color: red;
+    }
+    .radio-inline{
+        margin: 0 20px;
+    }
+</style>
+{% endblock %}
+
 {% block headers %}
 <header class="masthead" style="background-image: url( {% static 'background1.jpg' %} )">
     <div class="container">
@@ -22,21 +33,21 @@
     {% csrf_token %}
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">ID<span class="essential">*</span></span>
         </div>
         <input type="text" class="form-control userid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_userid' placeholder="아이디" required>
     </div>
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">PW</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">PW<span class="essential">*</span></span>
         </div>
         <input type="password" class="form-control password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_userpw' placeholder="비밀번호" required>
     </div>
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">PW Check</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">PW Check<span class="essential">*</span></span>
         </div>
         <input type="password" class="form-control password_check" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_userpw_check' placeholder="비밀번호 확인" required>
     </div>
@@ -44,7 +55,7 @@
     <!-- todo: email 형식 만들 것(front) && 선택사항(성별, 전화번호) 추가-->
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">Email<span class="essential">*</span></span>
         </div>
         <input type="email" class="form-control email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_email' placeholder="이메일" required>
     </div>
@@ -54,6 +65,14 @@
             <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
         </div>
         <input type="text" class="form-control phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  name='input_phone' placeholder="전화번호" >
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">성별</span>
+        </div>
+        <label class="radio-inline"><input type="radio" name="optradio" value="M">남</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="F">여</label>
     </div>
 
     <input type="submit" class="btn btn-outline-success signupBtn" value="회원가입">

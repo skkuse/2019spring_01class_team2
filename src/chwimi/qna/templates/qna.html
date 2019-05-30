@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+
+{% block extra-style %}
+<style>
+    .table{
+        text-align: center;
+    }
+    .pagination {
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
 {% block headers %}
-<header class="masthead" style="background-image: url({% static 'background2.jpg' %})">
+<header class="masthead" style="background-image: url({% static 'qna_main.png' %})">
     <div class="container">
         <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -17,15 +29,32 @@
 {% endblock %}
 
 {% block contents %}
-<div class="list-group">
-    {% for question in posts reversed%}
-    <a href="{% url 'questionDetail' question.id %}" class="font-weight-bold list-group-item list-group-item-action">{{question.title}} <p class="text-right">{{question.date}}</p>
-    <p>{{question.user}}</p></a>
+<!-- Questions -->
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">번호</th>
+        <th scope="col">제목</th>
+        <th scope="col">작성자</th>
+        <th scope="col">날짜</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in posts reversed %}
+        <tr>
+            <th scope="row">{{question.pk}}</th>
+            <td><a href="{% url 'questionDetail' question.id %}">{{question.title}}</a></td>
+            <td>{{question.user}}</td>
+            <td>{{question.date}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-    {% endfor %}
-</div> 
-
+<!-- Write Button for User -->
+{% if user.is_authenticated %}
 <a class="btn btn-outline-success" href="#" role="button">글쓰기</a>
+{% endif %}
 
 
 <!-- Paginator -->
