@@ -3,7 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
 
-from account.models import Profile
+from useraccount.models import Profile
 
 
 # Create your models here.

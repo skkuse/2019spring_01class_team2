@@ -3,14 +3,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import main.views
-import account.views
+import useraccount.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.views.home, name='home'),
     path('about/', main.views.about, name='about'),
     path('mypage/', main.views.mypage, name='mypage'),
-    path('account/', include('account.urls')),
+    path('useraccount/', include('useraccount.urls')),
+    path('accounts/', include('allauth.urls')),
     path('qna/', include('qna.urls')),
     path('hobbytest/', include('hobbytest.urls')),
     path('subscribe/', include('subscribe.urls')),

@@ -125,6 +125,12 @@
     .status-upload form button > i {
     margin-right: 7px;
     }
+
+
+
+    .card-inner{
+        margin-left: 4rem;
+    }
 </style>
 {% endblock %}
 
@@ -152,20 +158,43 @@
     <hr class="my-4">
     <p>{{question.content}}</p>
     {% if question.files %}
-    <img src="{{question.files.url}}">
+    <img style="max-width:700px; max-height: 700px;" src="{{question.files.url}}">
     {% endif %}
 </div>
 
 <!-- 댓글 목록 란 -->
-<h2>댓글목록</h2>
-{% for cmt in comment %}
-<h5>작성자: {{cmt.writer}}</h5>
-<h5>내용: {{cmt.content}}</h5>
-<h5>날짜: {{cmt.date}}</h5>
-<br>
-{% empty %}
-<h5>댓글이 없습니다.</h5>
-{% endfor %}
+<div class="container">
+    <h2 class="text-center">댓글 목록</h2>
+    
+    {% for cmt in comment %}
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                    <p class="text-secondary text-center">{{cmt.date}}</p>
+                </div>
+
+                <div class="col-md-10">
+                    <p>
+                        <strong>{{cmt.writer}}</strong>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+                    </p>
+                    <div class="clearfix">
+                    </div>
+                    <p>{{cmt.content}}</p>
+                </div>
+            </div>  
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">댓글이 없습니다.</p>
+    {% endfor %}
+</div>
 
 <!-- 댓글 입력 란 -->
 {% if user.is_authenticated %}

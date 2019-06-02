@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 PREQ_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -30,15 +31,24 @@ PREQ_APPS = [
 
 PROJ_APPS = [
     'main.apps.MainConfig',
-    'account.apps.AccountConfig',
+    'useraccount.apps.UseraccountConfig',
     'qna.apps.QnaConfig',
     'subscribe.apps.SubscribeConfig',
     'hobbytest.apps.HobbytestConfig',
     'review.apps.ReviewConfig',
     'notice.apps.NoticeConfig',
+
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # provider
+    'allauth.socialaccount.providers.kakao',
 ]
 
 INSTALLED_APPS = PREQ_APPS + PROJ_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,3 +137,16 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"  # 로그아웃 후 리디렉션 할 페이지
+ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 클릭 시 자동 로그아웃

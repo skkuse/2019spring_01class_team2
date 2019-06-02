@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Question, Comment_question
 from django.core.paginator import Paginator
-from account.models import Profile
+from useraccount.models import Profile
 
 # Create your views here.
 def qna(request):

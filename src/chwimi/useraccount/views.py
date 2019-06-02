@@ -4,7 +4,9 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from .models import Profile
-
+# from django.contrib.auth.views import LoginView
+from allauth.socialaccount.models import SocialApp
+from allauth.socialaccount.templatetags.socialaccount import get_providers
 
 def signup(request):
     if request.method == 'POST':
@@ -14,19 +16,21 @@ def signup(request):
                     username = request.POST['input_userid'],
                     password = request.POST['input_userpw']
                 )
-                user.save()
 
                 profile = Profile(user = user)
                 profile.email = request.POST['input_email']
                 if request.POST['input_phone']:
                     profile.phone = request.POST['input_phone']
-                if request.POST['optradio']:
+                try:
                     profile.gender = request.POST['optradio']
+                except:
+                    pass
                 profile.save()
                 
                 messages.add_message(request, messages.SUCCESS, '환영합니다!')
                 return redirect('home')
-            except:
+            except Exception as e:
+                print(e)
                 messages.add_message(request, messages.ERROR, '이미 존재하는 id입니다.')
                 return redirect('signup')
         messages.add_message(request, messages.ERROR, '비밀번호가 일치하지 않습니다.')   
@@ -56,3 +60,5 @@ def logout(request):
         
     return render(request, 'login.html')
 
+def oauth(request):
+    pass
