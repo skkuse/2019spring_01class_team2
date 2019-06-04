@@ -17,5 +17,44 @@
 {% endblock %}
 
 {% block contents %}
-<h1>SUBSCRIBE page</h1>
+<div style="background:transparent !important; border:10px solid #02a64f; padding: 70px;" class="jumbotron">
+    <h3 class="text-center">* 해당 글을 꼼꼼히 읽으신 후 아래의 양식을 작성해 주세요 </h2>
+    <p>구독 신청 완료 시 구독 기간 내에 구독 취소는 불가합니다.</p>
+    <p>구독 기간은 3, 6, 9개월이며 이외 개별 키트 판매나 체험 기간은 존재하지 않습니다.</p>
+    <p>구독 신청 후 한 달에 한 번 취향 분석 결과에 맞는 취미 키트가 랜덤 배송됩니다.</p>
+</div>
+
+<div class="container text-center">
+    <form action="" >
+        <div class="py-5 px-3 " style="background-color: #12312324; border-radius: 15px;">
+            <h4 class="mb-4">배송받을 분과의 관계</h4>
+            <div class="container">
+                <label class="radio-inline mx-5"><input type="radio" name="radio_rel" value="1">어머니</label>
+                <label class="radio-inline mx-5"><input type="radio" name="radio_rel" value="2">아버지</label>
+                <label class="radio-inline mx-5"><input type="radio" name="radio_rel" value="3">직접입력 <input type="text"></label>
+            </div>
+            <br>
+
+            <h4 class="mb-4">구독 개월 수</h4>
+            <div class="container">
+                <label class="radio-inline mx-5"><input type="radio" name="radio_subs" value="3">3개월</label>
+                <label class="radio-inline mx-5"><input type="radio" name="radio_subs" value="6">6개월</label>
+                <label class="radio-inline mx-5"><input type="radio" name="radio_subs" value="9">9개월</label>
+            </div>
+
+            <br>
+            <h4 class="mb-4">배송받을 주소</h4>
+            <div class="container">
+                <input type="text">
+            </div>
+
+        </div>
+
+        <div class="my-5">
+            <a href="{% url 'home' %}" class="btn btn-sm btn-outline-danger mx-3">취소</a>
+            <button type="submit" class="btn btn-sm btn-outline-success mx-3">결제하기</button>
+        </div>
+    </form>
+</div>
+
 {% endblock %}

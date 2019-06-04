@@ -43,7 +43,7 @@
         <tr>
             <th scope="row">{{notice.pk}}</th>
             <td><a href="{% url 'noticeDetail' notice.id %}">{{notice.title}}</a></td>
-            <td>{{notice.date}}</td>
+            <td>{{notice.date|date:"M d, Y"}}</td>
         </tr>
         {% endfor %}
     </tbody>

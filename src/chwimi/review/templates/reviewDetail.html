@@ -126,8 +126,6 @@
     margin-right: 7px;
     }
 
-
-
     .card-inner{
         margin-left: 4rem;
     }
@@ -135,13 +133,13 @@
 {% endblock %}
 
 {% block headers %}
-<header class="masthead" style="background-image: url({% static 'qna_main.png' %})">
+<header class="masthead" style="background-image: url({% static 'review_main.png' %})">
     <div class="container">
         <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="page-heading">
-            <h1>QnA</h1>
-            <span class="subheading">CHWIMI는 여러분의 질문을 기다립니다.<br></span>
+            <h1 style="color:black;">후기</h1>
+            <span class="subheading" style="color:black;">여러분의 CHWIMI에 늘 귀를 기울이고 있습니다.<br></span>
             </div>
         </div>
         </div>
@@ -150,15 +148,19 @@
 {% endblock %}
 
 {% block contents %}
-<!-- 질문 란 -->
+<!-- 후기 란 -->
 <div class="jumbotron">
-    <h3 class="display-6">{{question.title}}</h3>
-    <p class="lead">{{question.date}}</p>
-    <p class="lead">작성자: {{question.user}}</p>
+    <h3 class="display-6">{{review.title}}</h3>
+    <p class="lead">{{review.date}}</p>
+    <p class="lead">작성자: {{review.user}}</p>
     <hr class="my-4">
-    <p>{{question.content}}</p>
-    {% if question.files %}
-    <img style="max-width:700px; max-height: 700px;" src="{{question.files.url}}">
+    <p>상품: {{review.rate_product}} / 5</p>
+    <p>배송: {{review.rate_delivery}} / 5</p>
+    <p>가격: {{review.rate_price}} / 5</p>
+    <hr class="my-4">
+    <p>{{review.content}}</p>
+    {% if review.files %}
+    <img style="max-width:700px; max-height: 700px;" src="{{review.files.url}}">
     {% endif %}
 </div>
 
@@ -209,7 +211,7 @@
         <div class="col-md-8 mx-auto">
             <div class="widget-area no-padding blank">
                 <div class="status-upload">
-                    <form action="{% url 'new' question.pk %}" method="POST"> {% csrf_token %}
+                    <form action="{% url 'new' review.pk %}" method="POST"> {% csrf_token %}
                         <textarea name="content" placeholder="내용을 입력해주세요" ></textarea>
                         <button type="submit" class="btn btn-success green">작성</button>
                     </form>
@@ -222,5 +224,5 @@
 
 <br>
 
-<a class="btn btn-outline-warning" href="{% url 'qna' %}" role="button">목록으로</a>
+<a class="btn btn-outline-warning" href="{% url 'review' %}" role="button">목록으로</a>
 {% endblock %}

@@ -17,12 +17,13 @@
 {% endblock %}
 
 {% block contents %}
-<div class="jumbotron">
-    <h1 class="display-4">{{notice.title}}</h1>
+<div style="background:transparent !important; border:3px solid #02a64f; padding: 70px;" class="jumbotron">
+    <h3 class="display-6">{{notice.title}}</h3>
     <p class="lead">{{notice.date}}</p>
     <hr class="my-4">
     <p>{{notice.content}}</p>
 </div>
+
 
 <a class="btn btn-outline-warning" href="{% url 'notice' %}" role="button">목록으로</a>
 {% endblock %}

@@ -1,9 +1,45 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block headers %}
+<header class="masthead" style="background-image: url({% static 'mypage_main.png' %})">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+            <h1>마이 페이지</h1>
+            <span class="subheading">CHWIMI를 가지신 여러분을 위한 공간입니다.<br></span>
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
 {% endblock %}
 
 {% block contents %}
-<h1>mypage</h1>
+<h3>계정 정보</h3>
+<div style="background:transparent !important; border:10px solid #02a64f; padding: 30px;" class="jumbotron">
+    <p>아이디: {{user.username}}</p>
+    <p>이메일: {{user.profile.email}}</p>
+    {% if user.profile.phone %}
+    <p>휴대폰번호: {{user.profile.phone}}</p>
+    {% endif %}
+
+    {% if user.profile.gender %}
+    <p>성별: {{user.profile.gender}}</p>
+    {% endif %}
+</div>
+<br>
+
+<h3>구독 내역</h3>
+<div style="background:transparent !important; border:10px solid #02a64f; padding: 30px;" class="jumbotron">
+    <p> 구독 db에서 가져오기 </p>
+</div>
+<br>
+
+<h3>취미 분석 결과</h3>
+<div style="background:transparent !important; border:10px solid #02a64f; padding: 30px;" class="jumbotron">
+    <p> 취미 db에서 가져오기 </p>
+</div>
 
 {% endblock %}
