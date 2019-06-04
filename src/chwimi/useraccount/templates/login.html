@@ -24,7 +24,9 @@
 {% endblock %}
 
 {% block contents %}
-
+{% if user.is_authenticated %}
+<p>이미 로그인 상태입니다.</p>
+{% else %}
 <form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
     <div class="input-group mb-3">
@@ -48,10 +50,8 @@
 <br>
 <a href="/accounts/logout">카카오로그아웃</a>
 <br>
-{% if user.is_authenticated %}
-{{user.username}}이 로그인중
-{%endif%}
 
+{% endif %}
 
 
 {% endblock %}
