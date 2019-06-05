@@ -17,6 +17,17 @@ def questionDetail(request, question_id):
     
     return render(request, 'questionDetail.html', {'question':question_detail, 'comment':comment})
 
+def new_question(request):
+    if request.method == 'POST':
+        question = Question(files = request.FILES['file_qna'])
+        question.user = request.user
+        question.title = request.POST['title']
+        question.content = request.POST['content']
+        question.save()
+        return redirect('/qna')
+    
+    return render(request, 'new_qna.html')
+
 def new_cmt(request, q_pk):
     if request.method == 'POST':
         question = get_object_or_404(Question, pk=q_pk)
@@ -26,4 +37,4 @@ def new_cmt(request, q_pk):
 
         Comment_question.objects.create(question = question, writer = profile, content = content)
 
-        return redirect('/qna')
+        return redirect('/qna/'+str(q_pk))

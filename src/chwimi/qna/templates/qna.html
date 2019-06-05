@@ -40,7 +40,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for question in posts reversed %}
+        {% for question in posts  %}
         <tr>
             <th scope="row">{{question.pk}}</th>
             <td><a href="{% url 'questionDetail' question.id %}">{{question.title}}</a></td>
@@ -53,7 +53,7 @@
 
 <!-- Write Button for User -->
 {% if user.is_authenticated %}
-<a class="btn btn-outline-success" href="#" role="button">글쓰기</a>
+<a class="btn btn-outline-success" href="{% url 'new_question'%}" role="button">글쓰기</a>
 {% endif %}
 
 

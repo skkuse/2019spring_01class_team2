@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for review in posts reversed %}
+            {% for review in posts  %}
             <tr>
                 <th scope="row">{{review.pk}}</th>
                 <td><a href="{% url 'reviewDetail' review.id %}">{{review.title}}</a></td>

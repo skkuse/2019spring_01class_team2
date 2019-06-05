@@ -211,7 +211,7 @@
         <div class="col-md-8 mx-auto">
             <div class="widget-area no-padding blank">
                 <div class="status-upload">
-                    <form action="{% url 'new' review.pk %}" method="POST"> {% csrf_token %}
+                    <form action="{% url 'newRv' review.pk %}" method="POST"> {% csrf_token %}
                         <textarea name="content" placeholder="내용을 입력해주세요" ></textarea>
                         <button type="submit" class="btn btn-success green">작성</button>
                     </form>
