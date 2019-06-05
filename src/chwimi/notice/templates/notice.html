@@ -39,7 +39,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for notice in posts reversed %}
+        {% for notice in posts %}
         <tr>
             <th scope="row">{{notice.pk}}</th>
             <td><a href="{% url 'noticeDetail' notice.id %}">{{notice.title}}</a></td>

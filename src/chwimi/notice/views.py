@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def notice(request):
-    notices = Notice.objects.all().order_by('-date')
+    notices = Notice.objects.all().order_by('-id')
     paginator = Paginator(notices, 3)
     page = request.GET.get('page')
     posts = paginator.get_page(page)

@@ -5,7 +5,7 @@ from useraccount.models import Profile
 
 # Create your views here.
 def qna(request):
-    questions = Question.objects.all().order_by('-date')
+    questions = Question.objects.all().order_by('-id')
     paginator = Paginator(questions, 5)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -19,13 +19,15 @@ def questionDetail(request, question_id):
 
 def new_question(request):
     if request.method == 'POST':
-        question = Question(files = request.FILES['file_qna'])
+        try:
+            question = Question(files = request.FILES['file_qna'])
+        except:
+            question = Question()
         question.user = request.user
         question.title = request.POST['title']
         question.content = request.POST['content']
         question.save()
         return redirect('/qna')
-    
     return render(request, 'new_qna.html')
 
 def new_cmt(request, q_pk):

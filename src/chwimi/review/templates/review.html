@@ -53,7 +53,7 @@
 
 <!-- Write Button for User -->
 {% if user.is_authenticated %}
-<a class="btn btn-outline-success" href="#" role="button">글쓰기</a>
+<a class="btn btn-outline-success" href="{% url 'new_review_post'%}" role="button">글쓰기</a>
 {% endif %}
 
 

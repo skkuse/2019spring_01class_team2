@@ -40,13 +40,15 @@
         </tr>
     </thead>
     <tbody>
-        {% for question in posts  %}
+        {% for question in posts %}
         <tr>
             <th scope="row">{{question.pk}}</th>
             <td><a href="{% url 'questionDetail' question.id %}">{{question.title}}</a></td>
             <td>{{question.user}}</td>
             <td>{{question.date}}</td>
         </tr>
+        {% empty %}
+        <p>질문이 없습니다.</p>
         {% endfor %}
     </tbody>
 </table>
