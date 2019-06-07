@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block headers %}
+<header class="masthead" style="background-image: url({% static 'hobby_main.png' %})">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+            <h1 style="color:black;">취미 분석 테스트</h1>
+            <span class="subheading" style="color: black;">여러분의 빛나는 취미를 찾아보세요.<br></span>
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<h2>개인적인 시간 vs 다른 사람과 더불어 활동</h2>
+
+<form action="{% url 'test_3' %}" method="POST">
+    {% csrf_token %}
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio0" name="ans_3" class="custom-control-input" value="0" required>
+        <label class="custom-control-label" for="customRadio0">0</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio1" name="ans_3" class="custom-control-input" value="1">
+        <label class="custom-control-label" for="customRadio1">1</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio2" name="ans_3" class="custom-control-input" value="2">
+        <label class="custom-control-label" for="customRadio2">2</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio3" name="ans_3" class="custom-control-input" value="3">
+        <label class="custom-control-label" for="customRadio3">3</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio4" name="ans_3" class="custom-control-input" value="4">
+        <label class="custom-control-label" for="customRadio4">4</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio5" name="ans_3" class="custom-control-input" value="5">
+        <label class="custom-control-label" for="customRadio5">5</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio6" name="ans_3" class="custom-control-input" value="6">
+        <label class="custom-control-label" for="customRadio6">6</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio7" name="ans_3" class="custom-control-input" value="7">
+        <label class="custom-control-label" for="customRadio7">7</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio8" name="ans_3" class="custom-control-input" value="8">
+        <label class="custom-control-label" for="customRadio8">8</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio9" name="ans_3" class="custom-control-input" value="9">
+        <label class="custom-control-label" for="customRadio9">9</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="customRadio10" name="ans_3" class="custom-control-input" value="10">
+        <label class="custom-control-label" for="customRadio10">10</label>
+    </div>
+
+    <button type="submit">다음 페이지</button>
+</form>
+{% endblock %}

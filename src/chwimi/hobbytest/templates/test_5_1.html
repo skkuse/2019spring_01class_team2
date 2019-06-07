@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block headers %}
+<header class="masthead" style="background-image: url({% static 'hobby_main.png' %})">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+            <h1 style="color:black;">취미 분석 테스트</h1>
+            <span class="subheading" style="color: black;">여러분의 빛나는 취미를 찾아보세요.<br></span>
+            </div>
+        </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<form action="{% url 'test_5_1' %}" method="POST">
+    {% csrf_token %}
+
+    <!-- 1번 -->
+    <h2>1) 조립하는 활동을 얼마나 좋아하시나요?</h2>
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2110" name="ans_5_1_1" class="custom-control-input" value="0" required>
+        <label class="custom-control-label" for="2110">0</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2111" name="ans_5_1_1" class="custom-control-input" value="1">
+        <label class="custom-control-label" for="2111">1</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2112" name="ans_5_1_1" class="custom-control-input" value="2">
+        <label class="custom-control-label" for="2112">2</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2113" name="ans_5_1_1" class="custom-control-input" value="3">
+        <label class="custom-control-label" for="2113">3</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2114" name="ans_5_1_1" class="custom-control-input" value="4">
+        <label class="custom-control-label" for="2114">4</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2115" name="ans_5_1_1" class="custom-control-input" value="5">
+        <label class="custom-control-label" for="2115">5</label>
+    </div>
+
+    <!-- 2번 -->
+    <h2>2) 지적인 활동을 얼마나 좋아하시나요?</h2>
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2120" name="ans_5_1_2" class="custom-control-input" value="0" required>
+        <label class="custom-control-label" for="2120">0</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2121" name="ans_5_1_2" class="custom-control-input" value="1">
+        <label class="custom-control-label" for="2121">1</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2122" name="ans_5_1_2" class="custom-control-input" value="2">
+        <label class="custom-control-label" for="2122">2</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2123" name="ans_5_1_2" class="custom-control-input" value="3">
+        <label class="custom-control-label" for="2123">3</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2124" name="ans_5_1_2" class="custom-control-input" value="4">
+        <label class="custom-control-label" for="2124">4</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2125" name="ans_5_1_2" class="custom-control-input" value="5">
+        <label class="custom-control-label" for="2125">5</label>
+    </div>    
+
+
+    <!-- 3번 -->
+    <h2>3) 분석하는 활동을 얼마나 좋아하시나요? </h2>
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2130" name="ans_5_1_3" class="custom-control-input" value="0" required>
+        <label class="custom-control-label" for="2130">0</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2131" name="ans_5_1_3" class="custom-control-input" value="1">
+        <label class="custom-control-label" for="2131">1</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2132" name="ans_5_1_3" class="custom-control-input" value="2">
+        <label class="custom-control-label" for="2132">2</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2133" name="ans_5_1_3" class="custom-control-input" value="3">
+        <label class="custom-control-label" for="2133">3</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2134" name="ans_5_1_3" class="custom-control-input" value="4">
+        <label class="custom-control-label" for="2134">4</label>
+    </div>
+
+    <div class="mx-4 custom-control-inline custom-radio">
+        <input type="radio" id="2135" name="ans_5_1_3" class="custom-control-input" value="5">
+        <label class="custom-control-label" for="2135">5</label>
+    </div>
+    
+    <br>
+    <button type="submit">다음 페이지</button>
+</form>
+{% endblock %}

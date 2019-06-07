@@ -52,4 +52,4 @@ def new_cmt(request, r_pk):
 
         Comment_review.objects.create(review = review, writer = profile, content = content)
 
-        return redirect('/review')
+        return redirect('/review/'+str(r_pk))
