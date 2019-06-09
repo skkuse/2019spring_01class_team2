@@ -4,11 +4,25 @@
 팀원: 김탁영 김연경 장재혁 조윤아
 
 ---
+## Documents
+1. Requirements Specification
+[docs](https://github.com/skkuse/2019spring_01class_team2/blob/master/docs/requirement.pdf)
+<br>
+2. System Design
+[docs](https://github.com/skkuse/2019spring_01class_team2/blob/master/docs/system_design.pdf)
 
-## Installation
--
-
+## Installation & Run
+1. Install packages
+```{bash}
+pip install -r requirements.txt
+```
+2. Migrate
+```{bash}
+python manage.py migrate
+```
+3. Run
+```{bash}
+python manage.py runserver
+```
 ---
 
-## How to use
--
