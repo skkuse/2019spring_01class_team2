@@ -5,9 +5,10 @@
 
 ---
 ## Documents
-1. Requirements Specification
+1. Requirements Specification 
 [docs](https://github.com/skkuse/2019spring_01class_team2/blob/master/docs/requirement.pdf)
-<br>
+<br/>
+
 2. System Design
 [docs](https://github.com/skkuse/2019spring_01class_team2/blob/master/docs/system_design.pdf)
 
