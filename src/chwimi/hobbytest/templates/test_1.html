@@ -17,11 +17,13 @@
 {% endblock %}
 
 {% block contents %}
-<form action="{% url 'test_1' %}" method="POST">
+<form action="{% url 'test_1' %}" method="POST" class="text-center">
     {% csrf_token %}
-    <h1>이제까지 해 온 취미 중 즐거웠던 취미는 무엇입니까?</h1>
-    <input type="text" name="ans_1" required>
-    <button type="submit">다음 페이지</button>
+    <h4>이제까지 해 온 취미 중 즐거웠던 취미는 무엇입니까?</h4>
+    <br>
+    <input class="input-group" type="text" name="ans_1" required>
+    <br>
+    <button class="btn btn-outline-info" type="submit">다음 페이지</button>
 </form>
 
 {% endblock %}

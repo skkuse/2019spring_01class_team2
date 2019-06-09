@@ -65,7 +65,7 @@
         color: #000000;
         text-transform: uppercase;
         }
-        
+
     </style>
 
 
@@ -78,9 +78,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="{% url 'home' %}">HOME</a>
-                
+            <div class="navbar-nav" style="width:100%;">
+                <a class="nav-item nav-link" href="{% url 'home' %}">HOME</a>
                 <a class="nav-item nav-link" href="{% url 'about' %}">ABOUT</a>
                 <a class="nav-item nav-link" href="{% url 'notice' %}">NOTICE</a>
                 <a class="nav-item nav-link" href="{% url 'subscribe' %}">SUBSCRIBE</a>
@@ -98,11 +97,10 @@
                 <a class="nav-item nav-link signup" href="{% url 'signup' %}">SIGNUP</a>
                 <a class="nav-item nav-link login" href="{% url 'login' %}">LOGIN</a>
                 {% endif %}
-
                 
             </div>
             {% if user.is_authenticated %}
-            <p class="text-right mx-5">환영합니다, {{user.username}}님!</p>
+            <p class=" mx-4">환영합니다, {{user.username}}!</p>
             {% endif %}
         </div>
     </nav>

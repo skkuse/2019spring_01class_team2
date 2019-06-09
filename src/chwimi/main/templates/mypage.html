@@ -35,7 +35,7 @@
 <h3>구독 내역</h3>
 <div style="background:transparent !important; border:10px solid #02a64f; padding: 30px;" class="jumbotron">
     {% for subscribe in subscribes %}
-    <p>{{subscribe}} ({{subscribe.timeperiod}}개월)</p>
+    <p>{{forloop.counter}}. {{subscribe}} ({{subscribe.timeperiod}}개월)</p>
     {% empty %}
     <p>구독 내역이 없습니다.</p>
     {% endfor%}
@@ -44,7 +44,10 @@
 
 <h3>취미 분석 결과</h3>
 <div style="background:transparent !important; border:10px solid #02a64f; padding: 30px;" class="jumbotron">
-    <p> 취미 db에서 가져오기 </p>
-</div>
+    {% for hobby in hobbies %}
+    <p>{{forloop.counter}}. {{hobby.result_category}} → ({{hobby.result_product}})</p>
+    {% empty %}
+    <p>취미 테스트 내역이 없습니다.</p>
+    {% endfor%}</div>
 
 {% endblock %}

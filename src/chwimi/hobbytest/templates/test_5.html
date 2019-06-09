@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block extra-style %}
+<style>
+    .pic{
+        width: 450px;
+        height: 300px;
+    }
+</style>
+{% endblock %}
+
 {% block headers %}
 <header class="masthead" style="background-image: url({% static 'hobby_main.png' %})">
     <div class="container">
@@ -17,9 +26,22 @@
 {% endblock %}
 
 {% block contents %}
-<h2>즉흥적인 것 vs 계획적인 것</h2>
+<p class="text-center">주어지는 속성에 얼마나 가까운지를 나타내주세요.</p>
 
-<form action="{% url 'test_5' %}" method="POST">
+<div class="row text-center">
+    <div class="col-md-6">
+        <h4>즉흥적인 것</h4>
+        <img class="pic" src="{% static 'improvision.jpg' %}" alt="">
+    </div>
+
+    <div class="col-md-6">
+        <h4>계획적인 것</h4>
+        <img class="pic"  src="{% static 'planning.jpg' %}" alt="">
+    </div>
+</div>
+<br>
+
+<form action="{% url 'test_5' %}" method="POST" class="text-center">
     {% csrf_token %}
     <div class="mx-4 custom-control-inline custom-radio">
         <input type="radio" id="customRadio0" name="ans_5" class="custom-control-input" value="0" required>
@@ -75,7 +97,8 @@
         <input type="radio" id="customRadio10" name="ans_5" class="custom-control-input" value="10">
         <label class="custom-control-label" for="customRadio10">10</label>
     </div>
+    <br><br>
 
-    <button type="submit">다음 페이지</button>
+    <button class="btn btn-outline-info" type="submit">다음 페이지</button>
 </form>
 {% endblock %}

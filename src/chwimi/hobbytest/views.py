@@ -144,8 +144,11 @@ def result(request):
     hobby = get_user_hobby(request.user)
     category, item = recommend(hobby)
     item = item[1]
+    hobby.result_category = category
+    hobby.result_product = item
+    hobby.save()
 
-    return render(request, 'result.html', {'hobby':hobby, 'item':item, 'category':category})
+    return render(request, 'result.html', {'hobby':hobby})
 
 def recommend(hobby):
     client = RecombeeClient('skku-testinguser', 'L1zVNlMZfzgizO0C0bqB3DA87xEpSmH01DdXos7ZyZoJHzvsyuwDAtOu5bLZqyIs')

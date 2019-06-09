@@ -17,11 +17,13 @@
 {% endblock %}
 
 {% block contents %}
-<form action="{% url 'test_4_1' %}" method="POST">
-    {% csrf_token %}
+<p class="text-center">주어지는 속성에 얼마나 가까운지를 나타내주세요. <br>(1: 매우 좋아하지 않음, 5: 매우 좋아함)</p>
 
+<form action="{% url 'test_4_1' %}" method="POST" class="text-center">
+    {% csrf_token %}
+    <br>
     <!-- 1번 -->
-    <h2>1) 새로운 것에 도전하는 활동을 얼마나 좋아하시나요?</h2>
+    <h4>1) 새로운 것에 도전하는 활동을 얼마나 좋아하시나요?</h4>
     <div class="mx-4 custom-control-inline custom-radio">
         <input type="radio" id="2110" name="ans_4_1_1" class="custom-control-input" value="0" required>
         <label class="custom-control-label" for="2110">0</label>
@@ -51,9 +53,10 @@
         <input type="radio" id="2115" name="ans_4_1_1" class="custom-control-input" value="5">
         <label class="custom-control-label" for="2115">5</label>
     </div>
+    <br><br>
 
     <!-- 2번 -->
-    <h2>2) 지적인 활동을 얼마나 좋아하시나요?</h2>
+    <h4>2) 지적인 활동을 얼마나 좋아하시나요?</h4>
     <div class="mx-4 custom-control-inline custom-radio">
         <input type="radio" id="2120" name="ans_4_1_2" class="custom-control-input" value="0" required>
         <label class="custom-control-label" for="2120">0</label>
@@ -83,8 +86,8 @@
         <input type="radio" id="2125" name="ans_4_1_2" class="custom-control-input" value="5">
         <label class="custom-control-label" for="2125">5</label>
     </div>    
-
     <br>
-    <button type="submit">다음 페이지</button>
+    <br>
+    <button class="btn btn-outline-info" type="submit">다음 페이지</button>
 </form>
 {% endblock %}

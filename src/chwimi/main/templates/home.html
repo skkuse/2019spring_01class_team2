@@ -22,6 +22,10 @@
         padding: 70px;
     }
 
+    .videos{
+        border: 10px solid #02a64f;
+    }
+
 </style>
 {% endblock %}
 
@@ -42,6 +46,20 @@
 
 
 {% block contents %}
+
+{% if subscribes %}
+<h3>My Video</h3>
+<div class="videos">
+    <div class="row text-center">
+        {% for subscribe in subscribes %}
+        <div class="col-md-12 text-center my-3">
+            <iframe width="500" height="315" src="{{subscribe.item.video}}"></iframe>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+<br>
 
 <div class="home-expl">
     <div class="row">
