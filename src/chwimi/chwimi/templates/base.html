@@ -27,11 +27,6 @@
     {% block extra-script %}{% endblock %}
 
     {% block extra-style %}
-    <style>
-        *{
-            font-family: 'Gothic', sans-serif;
-        }
-    </style>
     {% endblock %}
 
     <title>Chwimi</title>
@@ -83,7 +78,7 @@
                 <a class="nav-item nav-link" href="{% url 'about' %}">ABOUT</a>
                 <a class="nav-item nav-link" href="{% url 'notice' %}">NOTICE</a>
                 <a class="nav-item nav-link" href="{% url 'subscribe' %}">SUBSCRIBE</a>
-                <a class="nav-item nav-link" href="{% url 'hobbytest' %}">HOBBYTEST</a>
+                <a class="nav-item nav-link testBtn" href="{% url 'hobbytest' %}">HOBBYTEST</a>
                 <a class="nav-item nav-link" href="{% url 'review' %}">REVIEW</a>
                 <a class="nav-item nav-link" href="{% url 'qna' %}">Q&A</a>
                 
@@ -115,8 +110,9 @@
             {% endif %}
         {% endfor %}
     {% endif %}
-</div>
+    </div>
 
+    <!-- Contents -->
     {% block headers %}
     {% endblock %}
 
@@ -125,6 +121,7 @@
     {% endblock %}
     </div>
 
+    <!-- Footer -->
     <footer class="page-footer font-small blue"> 
         <div class="footer-copyright text-center py-3">© 2019 Copyright:
           <a href="{% url 'home' %}"> CHWIMI</a>

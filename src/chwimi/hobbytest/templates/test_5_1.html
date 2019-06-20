@@ -18,7 +18,7 @@
 
 {% block contents %}
 <p class="text-center">주어지는 속성에 얼마나 가까운지를 나타내주세요. <br>(1: 매우 좋아하지 않음, 5: 매우 좋아함)<br>
-결과 도출까지 시간이 걸릴 수 있습니다.</p>
+<span style="color: red">*</span>결과 도출까지 시간이 걸릴 수 있습니다.</p>
 
 <form action="{% url 'test_5_1' %}" method="POST" class="text-center">
     {% csrf_token %}

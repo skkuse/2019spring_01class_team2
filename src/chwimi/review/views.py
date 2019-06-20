@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Review, Comment_review
 from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404, redirect, render
+
 from useraccount.models import Profile
 
-# Create your views here.
+from .models import Comment_review, Review
+
+# 후기 페이지 호출
 def review(request):
     reviews = Review.objects.all().order_by('-id')
     paginator = Paginator(reviews, 5)
@@ -12,10 +14,12 @@ def review(request):
 
     return render(request, 'review.html', {'reviews':reviews, 'posts':posts})
 
+# 후기 상세보기
 def reviewDetail(request, review_id):
     review_detail = get_object_or_404(Review, pk=review_id)
     comment = Comment_review.objects.filter(review=review_id)
     
+    # 평점 (상품, 배송, 가격)
     product = review_detail.rate_product
     product_none = 5-product
 
@@ -27,6 +31,7 @@ def reviewDetail(request, review_id):
 
     return render(request, 'reviewDetail.html', {'review':review_detail, 'comment':comment, 'product':range(product), 'nonproduct':range(product_none), 'delivery':range(delivery), 'nondelivery':range(delivery_none),'price':range(price), 'nonprice':range(price_none)}) 
 
+# 새 후기 남기기
 def new_rv(request):
     if request.method == 'POST':
         try:
@@ -43,6 +48,7 @@ def new_rv(request):
         return redirect('/review')
     return render(request, 'new_review.html')
 
+# 새 댓글 남기기
 def new_cmt(request, r_pk):
     if request.method == 'POST':
         review = get_object_or_404(Review, pk=r_pk)

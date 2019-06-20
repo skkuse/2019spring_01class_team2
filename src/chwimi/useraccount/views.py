@@ -4,14 +4,16 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from .models import Profile
-# from django.contrib.auth.views import LoginView
 from allauth.socialaccount.models import SocialApp
 from allauth.socialaccount.templatetags.socialaccount import get_providers
 
+# 회원가입
 def signup(request):
     if request.method == 'POST':
+        # 비밀번호 & 비밀번호 확인 검증
         if request.POST['input_userpw'] == request.POST['input_userpw_check']:
             try:
+                # 필수정보 저장
                 user = User.objects.create_user(
                     username = request.POST['input_userid'],
                     password = request.POST['input_userpw']
@@ -19,6 +21,8 @@ def signup(request):
 
                 profile = Profile(user = user)
                 profile.email = request.POST['input_email']
+
+                # 선택정보 저장
                 if request.POST['input_phone']:
                     profile.phone = request.POST['input_phone']
                 try:
@@ -36,8 +40,10 @@ def signup(request):
         messages.add_message(request, messages.ERROR, '비밀번호가 일치하지 않습니다.')   
     return render(request, 'signup.html')
 
+# 로그인
 def login(request):
     if request.method == 'POST':
+        # DB에서 유저 정보 조회
         username = request.POST['input_userid']
         password = request.POST['input_userpw']
         user = auth.authenticate(request, username=username, password=password)
@@ -52,6 +58,7 @@ def login(request):
 
     return render(request, 'login.html')
 
+# 로그아웃
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
@@ -59,6 +66,3 @@ def logout(request):
         return redirect('home')
         
     return render(request, 'login.html')
-
-def oauth(request):
-    pass
