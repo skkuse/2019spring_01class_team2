@@ -5,6 +5,26 @@ from django.urls import resolve
 import unittest
 import time
 
+'''
+< 테스트 케이스 > 
+** 문제 2 3 4 5 번 기준
+각각은 Openness , Agreeableness , Extraversion , Conscientiousness를 뜻함
+
+----------------------------------------------------
+| 문제 2 | 문제 3 | 문제 4 | 문제 5 |      결과      |
+----------------------------------------------------
+|    2   |   10  |    9   |    3   |     감성형     |
+|   10   |    2  |    1   |    5   |     오락형     |
+|    4   |    5  |    9   |    2   |     창작형     |
+|    6   |    4  |    7   |   10   |     제작형     |
+----------------------------------------------------
+|    5   |   10  |   10   |    9   | 창작형, 감성형  |
+|   10   |    8  |    5   |   10   | 오락형, 제작형  |
+----------------------------------------------------
+
+'''
+
+
 ## 기능 테스트
 class A_NewVisitorTest(LiveServerTestCase):
     def setUp(self):
@@ -117,7 +137,7 @@ class A_NewVisitorTest(LiveServerTestCase):
         
         nextBtn_1 = self.browser.find_element_by_class_name('nxt_1')
         nextBtn_1.click()
-        time.sleep(1)
+        time.sleep(2)
 
         # 2번 문항에 대한 응답을 한다. (2)
         ans_2 = self.browser.find_element_by_xpath('/html/body/div[2]/form/div[3]/label')
@@ -125,7 +145,7 @@ class A_NewVisitorTest(LiveServerTestCase):
 
         nextBtn_2 = self.browser.find_element_by_class_name('nxt_2')
         nextBtn_2.click()
-        time.sleep(1)
+        time.sleep(2)
 
         # 3번 문항에 대한 응답을 한다. (10)
         ans_3 = self.browser.find_element_by_xpath('/html/body/div[2]/form/div[11]/label')
@@ -133,7 +153,7 @@ class A_NewVisitorTest(LiveServerTestCase):
 
         nextBtn_3 = self.browser.find_element_by_class_name('nxt_3')
         nextBtn_3.click()
-        time.sleep(1)
+        time.sleep(2)
 
         # 4번 문항에 대한 응답을 한다. (9)
         ans_4 = self.browser.find_element_by_xpath('/html/body/div[2]/form/div[10]/label')
@@ -141,7 +161,7 @@ class A_NewVisitorTest(LiveServerTestCase):
 
         nextBtn_4 = self.browser.find_element_by_class_name('nxt_4')
         nextBtn_4.click()
-        time.sleep(1)
+        time.sleep(2)
 
         # 5번 문항에 대한 응답을 한다. (3)
         ans_5 = self.browser.find_element_by_xpath('/html/body/div[2]/form/div[4]/label')
@@ -149,11 +169,12 @@ class A_NewVisitorTest(LiveServerTestCase):
 
         nextBtn_5 = self.browser.find_element_by_class_name('nxt_5')
         nextBtn_5.click()
-        time.sleep(10)
+        time.sleep(5)
 
         # 결과를 확인한다. (감성형)
         returnBtn = self.browser.find_element_by_class_name('goHome')
         returnBtn.click()
+        time.sleep(3)
 
         # self.fail('======기능테스트======')
 
